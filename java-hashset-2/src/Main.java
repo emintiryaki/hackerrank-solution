@@ -4,18 +4,25 @@ import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
-// test case 5 de sorun var!!!
-
 public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        Set<String> set = new HashSet<>();
-        sc.nextLine(); // Consume the newline character after the integer input
+        Scanner s = new Scanner(System.in);
+        int n = s.nextInt();
+        String [] pairLeft = new String[n];
+        String [] pairRight = new String[n];
+
         for (int i = 0; i < n; i++) {
-            String s = sc.nextLine();
-            set.add(s);
-            System.out.println(set.size());
+            pairLeft[i] = s.next();
+            pairRight[i] = s.next();
+        }
+        Set<String> uniquePairs = new HashSet<>();
+        for (int i = 0; i < n; i++) {
+            String pair1 = pairLeft[i] + " " + pairRight[i];
+            String pair2 = pairRight[i] + " " + pairLeft[i];
+            if(!uniquePairs.contains(pair1) && !uniquePairs.contains(pair2)){
+                uniquePairs.add(pair1);
+            }
+            System.out.println(uniquePairs.size());
         }
     }
 }
